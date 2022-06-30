@@ -1,0 +1,329 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+<section class="cart py-12">
+    <%if(session.cart){ %>
+        <div class="order container mx-auto px-12">
+            <div class="flex items-center border-b border-gray-300 pb-4">
+                <img class="object-fill h-18 w-12" src="/img/black_cart.png" alt="">
+                <!-- <i class="fa fa-shopping-cart"></i> -->
+                <h1 class="font-bold ml-2 text-xl">Order Summary</h1>
+            </div>
+            <div class="food-list">
+                <%for(let data of Object.values(session.cart.items)){%>
+                    <div class="flex items-center my-8">
+                        <img class="w-24 rounded-lg" src="<%=data.item.imageUrl%>" alt="">
+                        <div class="flex-1 ml-4">
+                            <h1>
+                                <%=data.item.name%>
+                            </h1>
+                            <span class="text-xs"><i><%=data.item.description%></i></span>
+                        </div>
+                        <span class="flex-1"><%=data.qty%> Pcs</span>
+                        <span class="font-bold text-lg"><%=data.item.price * data.qty %> $ </span>
+                    </div>
+                    <% } %>
+                        <hr>
+                        <div class="text-right py-4">
+                            <div>
+                                <span class="text-lg font-bold">Total Amount:</span>
+                                <span class="amount text-2xl font-bold ml-2 text-orange-600"><%= session.cart.totalPrice%> $ </span>
+                            </div>
+                            <% if (user){%>
+                                <div>
+                                    <form onsubmit="submitForm" action="/checkout" method="POST" class="mt-12">
+                                        <input name="phone" class="border border-gray-400 p-2 w-1/2 mb-4" type="text" placeholder="Phone Number">
+
+                                        <div>
+                                            <label for="click" class="click-me"><i class='bx bxs-location-plus'></i></label>
+                                            <input name="address" class="border border-gray-400 p-2 w-1/2" type="text" placeholder="Address" id="location">
+                                        </div>
+
+                                        <div class="center" id="dialog">
+                                            <input type="checkbox" id="click">
+                                            <div class="content">
+                                                <div class="header">
+                                                    <h3>Mapping</h3>
+                                                    <label for="click" class="fas fa-times"></label>
+                                                    <input type="text" name="input" id="search-box" placeholder="search location">
+                                                </div>
+                                                <div class="open-Map" id="openmap">
+                                                    <div class="map" id="map">
+                                                        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCe2Y_jyDxUVmERWNu4xSKtBQ_pC3omxEI&callback=initMap&libraries=places&v=weekly" defer></script>
+                                                    </div>
+                                                    <button type="submit" id="closeDialog" class="select-btn" onclick="closeSelf(); return false;">Select Receiving Address</button>
+                                                </div>
+                                                <div class="address" id="address">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <button class="btn-primary px-6 py-2 rounded-full text-white font-bold mt-6" type="submit">Order Now</button>
+
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <% } else{%>
+                                    <a href="/login" class="inline-block cursor-pointer px-6 py-2 rounded-full bg-[#FE5F1E] text-white font-bold mt-6">
+                            Login to continue</a>
+                                    <% } %>
+                        </div>
+            </div>
+
+        </div>
+        <%} else{%>
+            <div class="empty-cart py-13">
+                <div class="conatiner mx-auto text-center">
+                    <h1 class="text-3xl font-bold mb-2">Cart Empty &#128546;</h1>
+                    <p class="text-gray-500 text-lg mb-12">You probably haven't ordered any food yet.
+                        <br> To order food, please go to main page</p>
+                    <center>
+                        <img class="w-1/5 " src="/img/empty_cart.png" alt="empty_cart">
+                    </center>
+
+                    <a href="/" class="btn inline-block px-6 py-2 rounded-full  font-bold mt-12 bg-[#FE5F1E] text-white">Go Back</a>
+                </div>
+            </div>
+            <%} %>
+                <style>
+                    body {
+                        margin: 0;
+                        padding: 0;
+                        height: 100vh;
+                        user-select: none;
+                    }
+                    
+                    .center,
+                    .content {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                    
+                    #click {
+                        display: none;
+                    }
+                    
+                    .click-me {
+                        display: block;
+                        font-size: 30px;
+                        border-radius: 6px;
+                        cursor: pointer;
+                        transition: 1s;
+                    }
+                    
+                    .click-me i {
+                        position: absolute;
+                    }
+                    
+                    .click-me:hover {
+                        background: white;
+                    }
+                    
+                    .show-map {
+                        display: flex;
+                    }
+                    
+                    .open-Map {
+                        display: none;
+                    }
+                    
+                    .content {
+                        opacity: 0;
+                        visibility: hidden;
+                        width: 600px;
+                        height: 600px;
+                        background: white;
+                        border-radius: 3px;
+                        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+                    }
+                    
+                    #search-box {
+                        border: none;
+                        background-color: #fff;
+                        margin-top: 12px;
+                        height: 37px;
+                        text-overflow: ellipsis;
+                        width: 350px;
+                        border-radius: 5px;
+                        box-shadow: 0 1px 2px rgba(0, 0, 0, );
+                    }
+                    
+                    .map {
+                        width: 600px;
+                        height: 540px;
+                    }
+                    
+                    #click:checked~.content {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                    
+                    .header {
+                        height: 60px;
+                        background: red;
+                        overflow: hidden;
+                        border-radius: 3px 3px 0 0;
+                        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+                    }
+                    
+                    .header h3 {
+                        margin-top: 15px;
+                        text-align: center;
+                        color: white;
+                        font-weight: bold;
+                    }
+                    
+                    .fa-times {
+                        position: absolute;
+                        right: 20px;
+                        top: 20px;
+                        color: white;
+                        font-size: 20px;
+                        cursor: pointer;
+                        font-weight: bold;
+                    }
+                    
+                    .fa-location-dot {
+                        color: white;
+                    }
+                    
+                    .bxs-location-plus {
+                        color: red;
+                    }
+                    
+                    .map {
+                        background-size: auto;
+                        max-height: auto;
+                        overflow: hidden;
+                    }
+                    
+                    #address {
+                        display: none;
+                    }
+                    
+                    .select-btn {
+                        text-align: center;
+                        position: absolute;
+                        bottom: 50px;
+                        width: 300px;
+                        margin: -10px 150px;
+                        border: 1px solid red;
+                        border-radius: 3px;
+                        color: white;
+                        background-color: red;
+                        padding: 8px 10px;
+                        cursor: pointer;
+                    }
+                    
+                    .select-btn:hover {
+                        background: white;
+                        color: red;
+                        transition: 1s;
+                    }
+                    
+                    #select-btn {
+                        display: inline-block;
+                    }
+                    
+                    .mapouter {
+                        position: relative;
+                        text-align: right;
+                        height: 400px;
+                        width: 6
+                    }
+                    
+                    .map .mapouter iframe {
+                        width: 600px;
+                        height: 520px;
+                    }
+                    
+                    .map .mapouter iframe a {
+                        display: none;
+                    }
+                </style>
+                <script>
+                    function initMap() {
+                        var map = new google.maps.Map(document.getElementById('map'), {
+                            center: {
+                                lat: -33.8688,
+                                lng: 151.2195
+                            },
+                            zoom: 13
+                        });
+                        var input = document.getElementById('search-box');
+                        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+                        var autocomplete = new google.maps.places.Autocomplete(input);
+                        autocomplete.bindTo('bounds', map);
+
+                        var infowindow = new google.maps.InfoWindow();
+                        var marker = new google.maps.Marker({
+                            map: map,
+                            anchorPoint: new google.maps.Point(0, -29),
+                            draggable: true,
+                        });
+
+                        autocomplete.addListener('place_changed', function() {
+                            infowindow.close();
+                            marker.setVisible(false);
+                            var place = autocomplete.getPlace();
+                            if (!place.geometry) {
+                                window.alert("Autocomplete's returned place contains no geometry");
+                                return;
+                            }
+
+                            // If the place has a geometry, then present it on a map.
+                            if (place.geometry.viewport) {
+                                map.fitBounds(place.geometry.viewport);
+                            } else {
+                                map.setCenter(place.geometry.location);
+                                map.setZoom(17);
+                            }
+                            marker.setIcon(({
+                                url: place.icon,
+                                size: new google.maps.Size(71, 71),
+                                origin: new google.maps.Point(0, 0),
+                                anchor: new google.maps.Point(17, 34),
+                                scaledSize: new google.maps.Size(35, 35)
+                            }));
+                            marker.setPosition(place.geometry.location);
+                            marker.setVisible(true);
+
+
+
+                            var address = '';
+                            if (place.address_components) {
+                                address = [
+                                    (place.address_components[0] && place.address_components[0].short_name || ''),
+                                    (place.address_components[1] && place.address_components[1].short_name || ''),
+                                    (place.address_components[2] && place.address_components[2].short_name || '')
+                                ].join(' ');
+                            }
+
+                            infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+                            infowindow.open(map, marker);
+
+                            document.getElementById('location').value = place.formatted_address
+                        });
+
+                    }
+
+                    document.getElementById("click").addEventListener("click", (e) => {
+                        const locationMap = document.getElementById("openmap")
+                        if (locationMap.className == "open-Map") {
+                            locationMap.className = "show-map";
+                        } else {
+                            locationMap.className = "open-Map";
+                        }
+                    });
+
+                    document.getElementById("closeDialog").addEventListener("click", (e) => {
+                        e.preventDefault();
+                        document.getElementById("dialog").style.display = "none";
+                    })
+                </script>
+</section>

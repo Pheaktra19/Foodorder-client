@@ -1,0 +1,54 @@
+<section>
+    <div class="px-20 py-10">
+        <h2 class="text-l font-bold">All Orders</h2>
+
+        <table class=" w-full table-auto bg-white py-20">
+            <thread>
+                <tr>
+                    <th class="px-4 py-2 text-left">Orders</th>
+                    <th class="px-4 py-2 text-left">Address</th>
+
+
+                    <th class="px-4 py-2 text-left">Time</th>
+                </tr>
+            </thread>
+            <tbody>
+                <% if(orders.length) { %>
+                    <% orders.forEach((order)=>{ %>
+                        <tr class="">
+                            <td class="border px-4 py-2">
+                                <a class="link text-orange-600" href="/">
+                                    <%=order._id %><br>
+                                        <% for(const key in JSON.parse(order.items)) { %>
+                                            <div>
+                                                <%= JSON.parse(order.items)[key].item.name %> x
+                                                    <%= JSON.parse(order.items)[key].qty %> pcs
+                                                        <%= JSON.parse(order.items)[key].qty * JSON.parse(order.items)[key].item.price %>$
+
+                                            </div>
+                                            <% } %>
+                                </a>
+                            </td>
+
+                            <td class="border px-4 py-2">
+                                <%=order.address %>
+                                    <td class="border px-4 py-2">
+                                        <%=moment(order.createdAt).format('hh:mm A')%>
+                                    </td>
+                            </td>
+                        </tr>
+                        <% }) %>
+
+                            <% }else{%>
+                                <tr>
+                                    <td class="p-4"><span>No Orders Found!</span></td>
+                                </tr>
+
+
+                                <%}%>
+            </tbody>
+
+        </table>
+    </div>
+
+</section>

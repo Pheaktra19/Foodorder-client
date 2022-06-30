@@ -1,0 +1,1086 @@
+{
+	"info": {
+		"_postman_id": "4eee6bcd-cfec-4e3d-9be4-f40d88f29e22",
+		"name": "Travel Advisor Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12191045"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "/auth/user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/user/623218fe2154504936b02c9e",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"623218fe2154504936b02c9e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/auth/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"lychanthorn2000@gmail.com\",\r\n    \"password\": \"11112222\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/auth/register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test2@gmail.com\",\r\n    \"firstName\": \"tith\",\r\n    \"lastName\": \"tith\",\r\n    \"password\": \"11112222\",\r\n    \"confirmPassword\": \"11112222\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/auth/logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/auth/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/auth/me",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{user}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/auth/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/auth/user/update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"buntith\",\r\n    \"lastName\": \"update 2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/user/update",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"user",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/auth/user/update-password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"leng\",\r\n    \"lastName\": \"update\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/user/update-password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"user",
+								"update-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/auth/user/delete-user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/auth/user/delete-user",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"user",
+								"delete-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/auth/admin/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin-tith@gmail.com\",\r\n    \"password\": \"11112222\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/admin/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"admin",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/send-email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"to\": \"lengbuntith2000@gmail.com\",\r\n    \"subject\": \"greeting\",\r\n    \"html\": \"hi buntith\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/send-email",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"send-email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/auth/forgot-password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"lengbuntith2000@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/forgot-password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/auth/reset-password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"111122222\",\r\n    \"confirmPassword\": \"111122222\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/reset-password/94b3cd44b07294fa3bd716fc2f062029a62e6f012a6321061584801c4761c8a9",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"reset-password",
+								"94b3cd44b07294fa3bd716fc2f062029a62e6f012a6321061584801c4761c8a9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "upload",
+			"item": [
+				{
+					"name": "/upload-image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/E:/Download/licensed-image.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/upload-image",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"upload-image"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "city",
+			"item": [
+				{
+					"name": "/city/all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/city/all",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"city",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/city/create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Siem Reap\",\r\n    \"description\": \"\",\r\n    \"thumbnail\": \"https://res.cloudinary.com/dik7npkoo/image/upload/v1652760012/fdch8o2yrgpphbmbtaf7.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/city/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"city",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/city/update/:id",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"abc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/city/update/62831cb1a037d4ca03974267",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"city",
+								"update",
+								"62831cb1a037d4ca03974267"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/city/delete/:id",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/city/delete/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"city",
+								"delete",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "item",
+			"item": [
+				{
+					"name": "/item/get_all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/item/all",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"item",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/item/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/item/628320beecc83a8c87913de7",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"item",
+								"628320beecc83a8c87913de7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/item/create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"angkor wat\",\r\n    \"thumbnail\": \"https://res.cloudinary.com/dik7npkoo/image/upload/v1652760012/fdch8o2yrgpphbmbtaf7.jpg\",\r\n    \"images\": [\r\n        \"https://res.cloudinary.com/dik7npkoo/image/upload/v1652760012/fdch8o2yrgpphbmbtaf7.jpg\",\r\n        \"https://res.cloudinary.com/dik7npkoo/image/upload/v1652760012/fdch8o2yrgpphbmbtaf7.jpg\",\r\n        \"https://res.cloudinary.com/dik7npkoo/image/upload/v1652760012/fdch8o2yrgpphbmbtaf7.jpg\"\r\n    ],\r\n    \"description\": \"angkor wat is temple in siem reap city part of cambodia kkdfgkfkgfkgjkf\",\r\n    \"city\": \"62901e61a79929f564c97106\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/item/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"item",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "place",
+			"item": [
+				{
+					"name": "get all place",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/place/all?page=1&most_comment=true&select=images&title=62",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"place",
+								"all"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "most_comment",
+									"value": "true"
+								},
+								{
+									"key": "select",
+									"value": "images"
+								},
+								{
+									"key": "title",
+									"value": "angkor",
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "62"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get place detail by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/place/62a15b412089d9440ecb63c7",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"place",
+								"62a15b412089d9440ecb63c7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create new place",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"Ta prom\",\r\n    \"city\": \"62831df3a037d4ca0397426b\",\r\n    \"date\"  : \"October - January\",\r\n    \"story\" : \" One of Cambodia's greatest tourist attractions\",\r\n    \"thumbnail\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Ankor_Wat_temple.jpg/1200px-Ankor_Wat_temple.jpg\",\r\n    \"images\": [\r\n        \"https://www.khmertimeskh.com/wp-content/uploads/2022/03/Angkor-Wat-Equinox-expected-to-draw-crowds.jpg\",\r\n        \"https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Ankor_Wat_temple.jpg/1200px-Ankor_Wat_temple.jpg\"\r\n    ],\r\n    \"lat\" : \"10.93827365738976\",\r\n    \"lng\" : \"104.30333944934905\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/place/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"place",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update by id",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"city\": \"62831df3a037d4ca0397426b\",\r\n    \"title\" : \"Angkor Wat\",\r\n    \"date\"  : \"October - January\",\r\n    \"story\" : \"One of Cambodia's greatest tourist attractions\",\r\n    \"images\": [\r\n        \"https://www.khmertimeskh.com/wp-content/uploads/2022/03/Angkor-Wat-Equinox-expected-to-draw-crowds.jpg\",\r\n        \"https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Ankor_Wat_temple.jpg/1200px-Ankor_Wat_temple.jpg\"\r\n    ],\r\n    \"lat\" : \"10.93827365738976\",\r\n    \"lng\" : \"104.30333944934905\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/place/update/629e2b94131d32bf7f56c88b",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"place",
+								"update",
+								"629e2b94131d32bf7f56c88b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete by id",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"Angkor Wat\",\r\n    \"date\"  : \"October - January\",\r\n    \"story\" : \" One of Cambodia's greatest tourist attractions, the Angkor Wat temple lies in Angkor and is one of the largest religious monuments to behold. Regarded as one of the Seven Wonders of the World, the UNESCO world heritages site Angkor Wat is a definite mustt visit on a holiday to Cambodia. It lies to the south of Angkor Thom that is also one of Cambodia's tourist spots. It pulls huge crows as it is one of the sites where Lara Croft and the Tomb Raider movies were shot. The Angkor Wat temples are on of the must visit temples in Cambodia.\",\r\n    \"images\": [\r\n        \"https://www.khmertimeskh.com/wp-content/uploads/2022/03/Angkor-Wat-Equinox-expected-to-draw-crowds.jpg\",\r\n        \"https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Ankor_Wat_temple.jpg/1200px-Ankor_Wat_temple.jpg\"\r\n    ],\r\n    \"lat\" : \"10.93827365738976\",\r\n    \"lng\" : \"104.30333944934905\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/place/delete/629e2b60131d32bf7f56c886",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"place",
+								"delete",
+								"629e2b60131d32bf7f56c886"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comment",
+			"item": [
+				{
+					"name": "Create new comment on a Place",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{user}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"place_id\": \"629efa2abc30c6733a338a08\",\r\n    \"message\": \"comment 1\",\r\n    \"rating\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/comment/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"comment",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get comments by Place id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/comment/628320beecc83a8c87913de7",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"comment",
+								"628320beecc83a8c87913de7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Event",
+			"item": [
+				{
+					"name": "create event",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{thorn1}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"place_id\": \"62a1a82b37c69950f312c497\",\r\n    \"describe\": \"I want to visit angkor wat\",\r\n    \"requirement\": \"money\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/event/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"event",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/event/all?page=1&sort=\"1 \"",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"event",
+								"all"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "sort",
+									"value": "\"1 \""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "delete event",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "update event by id",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "suggestion",
+			"item": [
+				{
+					"name": "get all suggestion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/suggestion/all?page=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"suggestion",
+								"all"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create suggestion",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{thorn}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"place_id\": \"629e2b94131d32bf7f56c88b\",\r\n    \"message\": \"Hello\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/suggestion/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"suggestion",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete suggestion by id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{thorn1}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"place_id\": \"1326rjbhr3343535\",\r\n    \"message\": \"Hello\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/suggestion/delete/62a1c46211b71003d63d2d64",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"suggestion",
+								"delete",
+								"62a1c46211b71003d63d2d64"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Saved",
+			"item": [
+				{
+					"name": "Add saved to account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{thorn}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"place_id\": \"629e2b94131d32bf7f56c88b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/saved/add",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"saved",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user saved",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{user}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/saved/all",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"saved",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user saved",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{user}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/saved/delete/62a02db9f4b47f122ae592ef",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"saved",
+								"delete",
+								"62a02db9f4b47f122ae592ef"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3001",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjI5NjNiZDYwNmJkNmNjNDJhYWYzYTFhIiwiaWF0IjoxNjU0NjYzMzQ3LCJleHAiOjE2NTUyNjgxNDd9.ooUmfMfZRo1fBsmJaUyGFxfDCT5_vROQkYMHRby0gqc",
+			"type": "string"
+		},
+		{
+			"key": "user",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjI5NjNiZDYwNmJkNmNjNDJhYWYzYTFhIiwiaWF0IjoxNjU0NTM0MjU1LCJleHAiOjE2NTUxMzkwNTV9.Vrflwqc9sJXel5lCbRA-drnkTVNBxR8g7QUAOLCYErI",
+			"type": "string"
+		},
+		{
+			"key": "thorn",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjI5OWQzZWU3ZmE4M2U5YTZiMWE3MTRhIiwiaWF0IjoxNjU0NjYzOTE3LCJleHAiOjE2NTUyNjg3MTd9.d0VQU5JRg916GKi5LutuavzUzgwoeqEfv1Avcg4GlVE",
+			"type": "string"
+		},
+		{
+			"key": "buntith",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjI5NjNiZDYwNmJkNmNjNDJhYWYzYTFhIiwiaWF0IjoxNjU0Njc3OTc3LCJleHAiOjE2NTUyODI3Nzd9.Ld14hcc1H37-TNoj0l2OeuCfMwH26f6SKzwIZ77kj7c",
+			"type": "string"
+		},
+		{
+			"key": "thorn1",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjJhMWIwZTYxMWI3MTAwM2Q2M2QyYmY3IiwiaWF0IjoxNjU0NzY3Mzg5LCJleHAiOjE2NTUzNzIxODl9.I35de_K4UZ-bcPma1DCXgznnCMGA1FFS2FEKO6vw8e0",
+			"type": "string"
+		}
+	]
+}

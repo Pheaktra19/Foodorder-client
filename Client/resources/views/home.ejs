@@ -1,0 +1,107 @@
+<section class="turbo py-10">
+    <div class="container mx-auto flex items-center justify-around py-4 px-20">
+        <div class="w-1/2">
+            <h6 class="text-lg"><em>Are you hungry?</em></h6>
+            <h1 class="text-5xl font-bold">Don't wait!</h1>
+            <button class="btn-primary px-6 py-2 rounded-full text-white font-bold mt-4">Order Now</button>
+        </div>
+        <div class="w-1/2">
+            <img src="/img/poster.png" alt="">
+        </div>
+    </div>
+</section>
+<section class="menu container mx-auto px-20 py-8">
+    <h1 class="text-xl font-bold py-8">There is something for everyone! </h1>
+    <div class="grid grid-cols-4">
+        <% categories.forEach(function(category){ %>
+            <a href="/subcate?cat_id=<%= category._id  %>">
+                <div class="up-wrapper">
+                    <div class="box">
+                        <div class="up-box ">
+                            <img id="upimage" src="<%=category.imageUrl%> ">
+                        </div>
+
+                        <h1 class="text-1xl font-bold">
+                            <%=category.name%>
+                        </h1>
+                    </div>
+                </div>
+            </a>
+            <%  }) %>
+</section>
+<section class="menu container mx-auto px-20 py-8">
+    <h1 class="text-xl font-bold ">Recommended for you!</h1><br>
+    <div class="grid grid-cols-4">
+        <% data.forEach(function(data){ %>
+            <div class="wrapper">
+                <div class="box-down">
+                    <div class="up-box ">
+                        <a href="/viewfood?id=<%= data._id  %>">    
+                            <img id="downimage" src="<%=data.imageUrl%> ">
+                        </a>
+                    </div>
+                    <div class="main-small">
+                        <div class="r1">
+                            <div class="c1">
+                                <h5 class="font-bold">
+                                    <%=data.name%>
+                                </h5>
+                                <p class="text-xs">
+                                    <i><%=data.description%></i>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="r1">
+                            <div class="c2">
+                                <p class="font-bold text-orange-600">
+                                    <%=data.price%> $
+                                </p>
+                                <p class="text-xs">
+                                    <%=data.shop%>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="add_btn ">
+                    <center>
+                        <button data-data="<%=JSON.stringify(data)%>" class="addcart py-1 px-4 rounded flex items-center font-bold mt-6s">
+                    <span>+</span>
+                    <span class="text-xs">ADD</span> 
+                </button>
+                        <center>
+                </div>
+            </div>
+            <%  }) %>
+
+    </div>
+
+</section>
+
+
+
+<footerS class="footer">
+
+    <div class="background">
+        <div class="classone flex">
+            <div>
+                <p>Tubo Food Order</p>
+                <p>Working schedule</p>
+                <p>Mon-Sat: 9:00am - 10:00pm</p>
+                <p>Sun: 10:00am - 8:00pm</p>
+            </div>
+            <div>
+                <p>Call us to make an order</p>
+                <p>Don't be shy, we don't bite :)</p>
+                <p>+855 12345678</p>
+            </div>
+
+        </div>
+        <div class="classtwo">
+            <div>
+                All Rights Reserved.
+            </div>
+        </div>
+    </div>
+</footerS>

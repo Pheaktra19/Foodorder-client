@@ -1,0 +1,78 @@
+<section class="turbo py-10">
+    <div class="container mx-auto flex items-center justify-around py-4 px-20">
+        <div class="w-1/2">
+            <h6 class="text-lg"><em>Are you hungry?</em></h6>
+            <h1 class="text-5xl font-bold">Don't wait!</h1>
+            <button class="btn-primary px-6 py-2 rounded-full text-white font-bold mt-4">Order Now</button>
+        </div>
+        <div class="w-1/2">
+            <img src="/img/poster.png" alt="">
+        </div>
+    </div>
+</section>
+
+<section class="menu container mx-auto px-20 py-8">
+    <div class="flex ">
+        <div>
+            <a href="/">
+                <h3 class="text-xl font-bold"> >Back
+
+            </a>
+        </div>
+        <div>
+            <h1 class="text-xl text-orange-600 font-bold"> >
+                <%if (data.length > 0) { %>
+                    <%= data[0].category.name %>
+                        <% } %>
+            </h1>
+        </div>
+
+    </div>
+    <br>
+    <div class="grid grid-cols-4 col-gap-12 row-gap-16 ">
+        <% data.forEach(function(data){ %>
+            <div class="wrapper">
+                <div class="box-down">
+                    <div class="up-box ">
+                        <img id="downimage" src="<%=data.imageUrl %> ">
+                    </div>
+                    <div class="main-small">
+                        <div class="r1">
+                            <div class="c1">
+                                <p class="text-base font-bold">
+                                    <%=data.name%>
+                                </p>
+
+
+                                <p class="text-xs">
+                                    <i><%=data.description%></i>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="r1">
+                            <div class="c2">
+                                <h4 class="font-bold text-orange-600">
+                                    <%=data.price%> $
+                                </h4>
+                                <p class="text-xs">
+                                    <%=data.shop%>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="add_btn">
+                    <center>
+                        <button data-data="<%=JSON.stringify(data)%>" class="addcart py-1 px-4 rounded flex items-center font-bold mt-6s">
+                  <span>+</span>
+                  <span class="text-xs">ADD</span> 
+              </button>
+                        <center>
+                </div>
+            </div>
+            <%  }) %>
+
+    </div>
+
+</section>
